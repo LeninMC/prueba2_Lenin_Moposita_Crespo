@@ -124,6 +124,8 @@ public class QuizViewModelMCLB extends ViewModel {
         return guessRows;
     }
 
+
+
     public void setGuessRowsMCLB(String choices) {
         this.guessRows = Integer.parseInt(choices) / 2;
     }

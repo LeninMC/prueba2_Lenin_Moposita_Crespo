@@ -1,5 +1,6 @@
 package com.nadershamma.apps.androidfunwithflags;
 
+
 import static android.content.Intent.getIntent;
 
 import java.io.IOException;
@@ -9,6 +10,7 @@ import java.security.SecureRandom;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 
@@ -49,6 +51,8 @@ public class MainActivityFragmentMCLB extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.quizViewModelMCLB = ViewModelProviders.of(getActivity()).get(QuizViewModelMCLB.class);
+
+
     }
 
     @Override
@@ -71,9 +75,12 @@ public class MainActivityFragmentMCLB extends Fragment {
 
         tvMostrar = view.findViewById(R.id.txtMostrar);
 
-        Bundle datosExtra = getIntent().getExtras();
-        String user = datosExtra.getString("key_user");
-        tvMostrar.setText(user);
+       // Intent intent = new Intent();
+        //Bundle datosExtra = getIntent(intent).getExtras();
+        //String user = datosExtra.getString("key_user");
+       // tvMostrar.setText(user);
+
+
 
         for (int i = 0; i < answersTableLayout.getChildCount(); i++) {
             try {
