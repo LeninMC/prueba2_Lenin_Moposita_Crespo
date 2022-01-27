@@ -22,7 +22,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_settings"/>
+    <include layout="@layout/content_settings_mclb"/>
 
 </android.support.v7.widget.LinearLayoutCompat>
 

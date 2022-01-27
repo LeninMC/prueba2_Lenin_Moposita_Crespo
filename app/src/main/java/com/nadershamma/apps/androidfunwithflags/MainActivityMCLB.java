@@ -26,7 +26,7 @@ public class MainActivityMCLB extends AppCompatActivity {
 
     private void setSharedPreferences() {
         // set default values in the app's SharedPreferences
-        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+        PreferenceManager.setDefaultValues(this, R.xml.preferences_mclb, false);
 
         // Register a listener for shared preferences changes
         PreferenceManager.getDefaultSharedPreferences(this)
@@ -66,7 +66,7 @@ public class MainActivityMCLB extends AppCompatActivity {
             this.quizViewModelMCLB.setRegionsSet(PreferenceManager.getDefaultSharedPreferences(this)
                     .getStringSet(REGIONS, null));
 
-            this.quizFragment.resetQuiz();
+            this.quizFragment.resetQuizMCLB();
 
             preferencesChanged = false;
         }
@@ -77,7 +77,7 @@ public class MainActivityMCLB extends AppCompatActivity {
         int orientation = getResources().getConfiguration().orientation;
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
             // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.menu_main, menu);
+            getMenuInflater().inflate(R.menu.menu_main_mclb, menu);
             return true;
         } else {
             return false;

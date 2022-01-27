@@ -33,7 +33,7 @@ public class ResultsDialogFragmentMCLB extends DialogFragment{
                 try{
                     MainActivityFragmentMCLB quizFragment = (MainActivityFragmentMCLB) getParentFragment();
                     try{
-                        quizFragment.resetQuiz();
+                        quizFragment.resetQuizMCLB();
                     }catch (Exception e){
                         Log.e(quizViewModelMCLB.getTag(),"Unable to call resetQuiz()", e);
                     }

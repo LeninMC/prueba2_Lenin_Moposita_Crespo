@@ -52,12 +52,12 @@ public class MainActivityFragmentMCLB extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_main_mclb, container, false);
         OnClickListener guessButtonListener = new GuessButtonListenerMCLB(this);
         TableLayout answersTableLayout = view.findViewById(R.id.answersTableLayout);
 
         this.random = new SecureRandom();
-        this.shakeAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.incorrect_shake);
+        this.shakeAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.incorrect_shake_mclb);
         this.shakeAnimation.setRepeatCount(3);
         this.quizConstraintLayout = view.findViewById(R.id.quizConstraintLayout);
         this.questionNumberTextView = view.findViewById(R.id.questionNumberTextView);
@@ -90,7 +90,7 @@ public class MainActivityFragmentMCLB extends Fragment {
         return view;
     }
 
-    public void updateGuessRows() {
+    public void updateGuessRowsMCLB() {
 
         int numberOfGuessRows = this.quizViewModelMCLB.getGuessRows();
         for (TableRow row : this.guessTableRows) {
@@ -101,7 +101,7 @@ public class MainActivityFragmentMCLB extends Fragment {
         }
     }
 
-    public void resetQuiz() {
+    public void resetQuizMCLB() {
         this.quizViewModelMCLB.clearFileNameList();
         this.quizViewModelMCLB.setFileNameList(getActivity().getAssets());
         this.quizViewModelMCLB.resetTotalGuesses();
@@ -121,7 +121,7 @@ public class MainActivityFragmentMCLB extends Fragment {
             }
         }
 
-        this.updateGuessRows();
+        this.updateGuessRowsMCLB();
         this.loadNextFlag();
     }
 
