@@ -31,18 +31,15 @@ public class LoginActivityMCLB extends AppCompatActivity {
     }
 
     public void onClicAceptar(View view) {
-         String user1 = "lenin@gmail.com";
-         String user2 = "bryan@gmail.com";
-         String user1pass = "lenin123";
-         String user2pass = "bryan123";
+
         String user = etCorreo.getText().toString();
         String password = etContraseña.getText().toString();
         //nombre.toUpperCase(Locale.ROOT);
         if (!user.matches("") && !password.matches("") ) {
-          if ((user == user1 && password == user1pass) || (user == user2 && password == user2pass)){
+          if ((user.matches("lenin@gmail.com") && password.matches("lenin123")) ||
+                  (user.matches("bryan@gmail.com") && password.matches("bryan123"))){
               Intent intent = new Intent(this, MainActivityMCLB.class);
-              //intent.putExtra("key_nombre",nombre);
-              // intent.putExtra("key_apellido",apellido);
+              intent.putExtra("key_user",user);
 
               startActivity(intent);
           }else {
