@@ -43,7 +43,7 @@ public class LoginActivityMCLB extends AppCompatActivity {
 
               startActivity(intent);
           }else {
-              Toast.makeText(this, "Correo o contraseña erroneos ", Toast.LENGTH_LONG).show();
+              Toast.makeText(this, "Correo o contraseña erroneos  ", Toast.LENGTH_LONG).show();
           }
 
         } else {
