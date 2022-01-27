@@ -1,5 +1,7 @@
 package com.nadershamma.apps.androidfunwithflags;
 
+import static android.content.Intent.getIntent;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.SecureRandom;
@@ -41,6 +43,7 @@ public class MainActivityFragmentMCLB extends Fragment {
     private TableRow[] guessTableRows;
     private TextView answerTextView;
     private QuizViewModelMCLB quizViewModelMCLB;
+    private TextView tvMostrar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,7 +69,11 @@ public class MainActivityFragmentMCLB extends Fragment {
         this.guessTableRows = new TableRow[4];
         this.answerTextView = view.findViewById(R.id.answerTextView);
 
+        tvMostrar = view.findViewById(R.id.txtMostrar);
 
+        Bundle datosExtra = getIntent().getExtras();
+        String user = datosExtra.getString("key_user");
+        tvMostrar.setText(user);
 
         for (int i = 0; i < answersTableLayout.getChildCount(); i++) {
             try {

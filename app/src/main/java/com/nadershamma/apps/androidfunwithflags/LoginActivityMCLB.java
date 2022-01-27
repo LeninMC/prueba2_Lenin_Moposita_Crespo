@@ -38,7 +38,7 @@ public class LoginActivityMCLB extends AppCompatActivity {
         if (!user.matches("") && !password.matches("") ) {
           if ((user.matches("lenin@gmail.com") && password.matches("lenin123")) ||
                   (user.matches("bryan@gmail.com") && password.matches("bryan123"))){
-              Intent intent = new Intent(this, MainActivityMCLB.class);
+              Intent intent = new Intent(this, MainActivityFragmentMCLB.class);
               intent.putExtra("key_user",user);
 
               startActivity(intent);
