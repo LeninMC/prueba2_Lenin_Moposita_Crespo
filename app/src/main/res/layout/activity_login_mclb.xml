@@ -43,5 +43,30 @@
             android:layout_height="wrap_content"
             android:onClick="onClicAceptar"
             android:text="Aceptar" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Usuario -- Contraseña"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="lenin@gmail.com -- lenin123"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bryan@gmail.com -- bryan123"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
     </LinearLayout>
 </LinearLayout>
