@@ -28,31 +28,31 @@ public class QuizViewModelMCLB extends ViewModel {
         quizCountriesList = new ArrayList<>();
     }
 
-    public static String getTag() {
+    public static String getTagMCLB() {
         return TAG;
     }
 
-    public static int getFlagsInQuiz() {
+    public static int getFlagsInQuizMCLB() {
         return FLAGS_IN_QUIZ;
     }
 
-    public int getTotalGuesses() {
+    public int getTotalGuessesMCLB() {
         return totalGuesses;
     }
 
-    public void setTotalGuesses(int totalGuesses) {
+    public void setTotalGuessesMCLB(int totalGuesses) {
         this.totalGuesses += totalGuesses;
     }
 
-    public void resetTotalGuesses() {
+    public void resetTotalGuessesMCLB() {
         this.totalGuesses = 0;
     }
 
-    public List<String> getFileNameList() {
+    public List<String> getFileNameListMCLB() {
         return fileNameList;
     }
 
-    public void setFileNameList(AssetManager assets) {
+    public void setFileNameListMCLB(AssetManager assets) {
         try {
             for (String region : regionsSet) {
                 String[] paths = assets.list(region);
@@ -65,70 +65,70 @@ public class QuizViewModelMCLB extends ViewModel {
         }
     }
 
-    public void clearFileNameList(){
+    public void clearFileNameListMCLB(){
         this.fileNameList.clear();
     }
 
-    public void shuffleFilenameList(){
+    public void shuffleFilenameListMCLB(){
         Collections.shuffle(this.fileNameList);
         int correct = this.fileNameList.indexOf(this.correctAnswer);
         this.fileNameList.add(this.fileNameList.remove(correct));
     }
 
-    public List<String> getQuizCountriesList() {
+    public List<String> getQuizCountriesListMCLB() {
         return quizCountriesList;
     }
 
-    public void setQuizCountriesList(List<String> quizCountriesList) {
+    public void setQuizCountriesListMCLB(List<String> quizCountriesList) {
         this.quizCountriesList = quizCountriesList;
     }
 
-    public void clearQuizCountriesList(){
+    public void clearQuizCountriesListMCLB(){
         this.quizCountriesList.clear();
     }
 
-    public Set<String> getRegionsSet() {
+    public Set<String> getRegionsSetMCLB() {
         return regionsSet;
     }
 
-    public void setRegionsSet(Set<String> regions) {
+    public void setRegionsSetMCLB(Set<String> regions) {
         this.regionsSet = regions;
     }
 
-    public String getCorrectAnswer() {
+    public String getCorrectAnswerMCLB() {
         return correctAnswer;
     }
 
-    public String getCorrectCountryName() {
+    public String getCorrectCountryNameMCLB() {
         return correctAnswer.substring(correctAnswer.indexOf('-') + 1)
                 .replace('_', ' ');
     }
 
-    public void setCorrectAnswer(String correctAnswer) {
+    public void setCorrectAnswerMCLB(String correctAnswer) {
         this.correctAnswer = correctAnswer;
     }
 
-    public int getCorrectAnswers() {
+    public int getCorrectAnswersMCLB() {
         return correctAnswers;
     }
 
-    public void setCorrectAnswers(int correctAnswers) {
+    public void setCorrectAnswersMCLB(int correctAnswers) {
         this.correctAnswers += correctAnswers;
     }
 
-    public void resetCorrectAnswers() {
+    public void resetCorrectAnswersMCLB() {
         this.correctAnswers = 0;
     }
 
-    public int getGuessRows() {
+    public int getGuessRowsMCLB() {
         return guessRows;
     }
 
-    public void setGuessRows(String choices) {
+    public void setGuessRowsMCLB(String choices) {
         this.guessRows = Integer.parseInt(choices) / 2;
     }
 
-    public String getNextCountryFlag(){
+    public String getNextCountryFlagMCLB(){
         return quizCountriesList.remove(0);
     }
 }

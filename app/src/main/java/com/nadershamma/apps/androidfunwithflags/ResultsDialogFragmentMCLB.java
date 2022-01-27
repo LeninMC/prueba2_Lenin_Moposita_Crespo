@@ -22,7 +22,7 @@ public class ResultsDialogFragmentMCLB extends DialogFragment{
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final QuizViewModelMCLB quizViewModelMCLB = ViewModelProviders.of(getActivity()).get(QuizViewModelMCLB.class);
-        int totalGuesses = quizViewModelMCLB.getTotalGuesses();
+        int totalGuesses = quizViewModelMCLB.getTotalGuessesMCLB();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(
                 getString(R.string.results, totalGuesses, (1000 / (double) totalGuesses)));
@@ -35,11 +35,11 @@ public class ResultsDialogFragmentMCLB extends DialogFragment{
                     try{
                         quizFragment.resetQuizMCLB();
                     }catch (Exception e){
-                        Log.e(quizViewModelMCLB.getTag(),"Unable to call resetQuiz()", e);
+                        Log.e(quizViewModelMCLB.getTagMCLB(),"Unable to call resetQuiz()", e);
                     }
                 }
                 catch (Exception e){
-                    Log.e(quizViewModelMCLB.getTag(),"Unable to get ActivityMainFragment", e);
+                    Log.e(quizViewModelMCLB.getTagMCLB(),"Unable to get ActivityMainFragment", e);
                 }
             }
         });

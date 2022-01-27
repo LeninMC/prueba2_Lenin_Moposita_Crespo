@@ -18,22 +18,22 @@ public class PreferenceChangeListenerMCLB implements OnSharedPreferenceChangeLis
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        this.mainActivityMCLB.setPreferencesChanged(true);
+        this.mainActivityMCLB.setPreferencesChangedMCLB(true);
 
-        if (key.equals(this.mainActivityMCLB.getREGIONS())) {
-            this.mainActivityMCLB.getQuizViewModel().setGuessRows(sharedPreferences.getString(
+        if (key.equals(this.mainActivityMCLB.getREGIONSMCLB())) {
+            this.mainActivityMCLB.getQuizViewModel().setGuessRowsMCLB(sharedPreferences.getString(
                     MainActivityMCLB.CHOICES, null));
-            this.mainActivityMCLB.getQuizFragment().resetQuiz();
-        } else if (key.equals(this.mainActivityMCLB.getCHOICES())) {
-            Set<String> regions = sharedPreferences.getStringSet(this.mainActivityMCLB.getREGIONS(),
+            this.mainActivityMCLB.getQuizFragment().resetQuizMCLB();
+        } else if (key.equals(this.mainActivityMCLB.getCHOICESMCLB())) {
+            Set<String> regions = sharedPreferences.getStringSet(this.mainActivityMCLB.getREGIONSMCLB(),
                     null);
             if (regions != null && regions.size() > 0) {
-                this.mainActivityMCLB.getQuizViewModel().setRegionsSet(regions);
-                this.mainActivityMCLB.getQuizFragment().resetQuiz();
+                this.mainActivityMCLB.getQuizViewModel().setRegionsSetMCLB(regions);
+                this.mainActivityMCLB.getQuizFragment().resetQuizMCLB();
             } else {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 regions.add(this.mainActivityMCLB.getString(R.string.default_region));
-                editor.putStringSet(this.mainActivityMCLB.getREGIONS(), regions);
+                editor.putStringSet(this.mainActivityMCLB.getREGIONSMCLB(), regions);
                 editor.apply();
                 Toast.makeText(this.mainActivityMCLB, R.string.default_region_message,
                         Toast.LENGTH_LONG).show();

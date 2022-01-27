@@ -24,7 +24,7 @@ public class MainActivityMCLB extends AppCompatActivity {
     private QuizViewModelMCLB quizViewModelMCLB;
     private OnSharedPreferenceChangeListener preferencesChangeListener;
 
-    private void setSharedPreferences() {
+    private void setSharedPreferencesMCLB() {
         // set default values in the app's SharedPreferences
         PreferenceManager.setDefaultValues(this, R.xml.preferences_mclb, false);
 
@@ -33,9 +33,9 @@ public class MainActivityMCLB extends AppCompatActivity {
                 .registerOnSharedPreferenceChangeListener(preferencesChangeListener);
     }
 
-    private void screenSetUp() {
-        if (getScreenSize() == Configuration.SCREENLAYOUT_SIZE_LARGE ||
-                getScreenSize() == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
+    private void screenSetUpMCLB() {
+        if (getScreenSizeMCLB() == Configuration.SCREENLAYOUT_SIZE_LARGE ||
+                getScreenSizeMCLB() == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
             deviceIsPhone = false;
         }
         if (deviceIsPhone) {
@@ -51,8 +51,8 @@ public class MainActivityMCLB extends AppCompatActivity {
         setContentView(R.layout.activity_main_mclb);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        this.setSharedPreferences();
-        this.screenSetUp();
+        this.setSharedPreferencesMCLB();
+        this.screenSetUpMCLB();
     }
 
     @Override
@@ -61,9 +61,9 @@ public class MainActivityMCLB extends AppCompatActivity {
         if (preferencesChanged) {
             this.quizFragment = (MainActivityFragmentMCLB) getSupportFragmentManager()
                     .findFragmentById(R.id.quizFragment);
-            this.quizViewModelMCLB.setGuessRows(PreferenceManager.getDefaultSharedPreferences(this)
+            this.quizViewModelMCLB.setGuessRowsMCLB(PreferenceManager.getDefaultSharedPreferences(this)
                     .getString(CHOICES, null));
-            this.quizViewModelMCLB.setRegionsSet(PreferenceManager.getDefaultSharedPreferences(this)
+            this.quizViewModelMCLB.setRegionsSetMCLB(PreferenceManager.getDefaultSharedPreferences(this)
                     .getStringSet(REGIONS, null));
 
             this.quizFragment.resetQuizMCLB();
@@ -91,7 +91,7 @@ public class MainActivityMCLB extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public int getScreenSize() {
+    public int getScreenSizeMCLB() {
         return getResources().getConfiguration().screenLayout &
                 Configuration.SCREENLAYOUT_SIZE_MASK;
     }
@@ -104,15 +104,15 @@ public class MainActivityMCLB extends AppCompatActivity {
         return quizViewModelMCLB;
     }
 
-    public static String getCHOICES() {
+    public static String getCHOICESMCLB() {
         return CHOICES;
     }
 
-    public static String getREGIONS() {
+    public static String getREGIONSMCLB() {
         return REGIONS;
     }
 
-    public void setPreferencesChanged(boolean preferencesChanged) {
+    public void setPreferencesChangedMCLB(boolean preferencesChanged) {
         this.preferencesChanged = preferencesChanged;
     }
 

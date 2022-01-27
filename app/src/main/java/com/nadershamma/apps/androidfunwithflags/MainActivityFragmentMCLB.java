@@ -74,7 +74,7 @@ public class MainActivityFragmentMCLB extends Fragment {
                     this.guessTableRows[i] = (TableRow) answersTableLayout.getChildAt(i);
                 }
             } catch (ArrayStoreException e) {
-                Log.e(QuizViewModelMCLB.getTag(),
+                Log.e(QuizViewModelMCLB.getTagMCLB(),
                         "Error getting button rows on loop #" + String.valueOf(i), e);
             }
         }
@@ -86,13 +86,13 @@ public class MainActivityFragmentMCLB extends Fragment {
         }
 
         this.questionNumberTextView.setText(
-                getString(R.string.question, 1, QuizViewModelMCLB.getFlagsInQuiz()));
+                getString(R.string.question, 1, QuizViewModelMCLB.getFlagsInQuizMCLB()));
         return view;
     }
 
     public void updateGuessRowsMCLB() {
 
-        int numberOfGuessRows = this.quizViewModelMCLB.getGuessRows();
+        int numberOfGuessRows = this.quizViewModelMCLB.getGuessRowsMCLB();
         for (TableRow row : this.guessTableRows) {
             row.setVisibility(View.GONE);
         }
@@ -102,21 +102,21 @@ public class MainActivityFragmentMCLB extends Fragment {
     }
 
     public void resetQuizMCLB() {
-        this.quizViewModelMCLB.clearFileNameList();
-        this.quizViewModelMCLB.setFileNameList(getActivity().getAssets());
-        this.quizViewModelMCLB.resetTotalGuesses();
-        this.quizViewModelMCLB.resetCorrectAnswers();
-        this.quizViewModelMCLB.clearQuizCountriesList();
+        this.quizViewModelMCLB.clearFileNameListMCLB();
+        this.quizViewModelMCLB.setFileNameListMCLB(getActivity().getAssets());
+        this.quizViewModelMCLB.resetTotalGuessesMCLB();
+        this.quizViewModelMCLB.resetCorrectAnswersMCLB();
+        this.quizViewModelMCLB.clearQuizCountriesListMCLB();
 
         int flagCounter = 1;
-        int numberOfFlags = this.quizViewModelMCLB.getFileNameList().size();
-        while (flagCounter <= QuizViewModelMCLB.getFlagsInQuiz()) {
+        int numberOfFlags = this.quizViewModelMCLB.getFileNameListMCLB().size();
+        while (flagCounter <= QuizViewModelMCLB.getFlagsInQuizMCLB()) {
             int randomIndex = this.random.nextInt(numberOfFlags);
 
-            String filename = this.quizViewModelMCLB.getFileNameList().get(randomIndex);
+            String filename = this.quizViewModelMCLB.getFileNameListMCLB().get(randomIndex);
 
-            if (!this.quizViewModelMCLB.getQuizCountriesList().contains(filename)) {
-                this.quizViewModelMCLB.getQuizCountriesList().add(filename);
+            if (!this.quizViewModelMCLB.getQuizCountriesListMCLB().contains(filename)) {
+                this.quizViewModelMCLB.getQuizCountriesListMCLB().add(filename);
                 ++flagCounter;
             }
         }
@@ -127,46 +127,46 @@ public class MainActivityFragmentMCLB extends Fragment {
 
     private void loadNextFlag() {
         AssetManager assets = getActivity().getAssets();
-        String nextImage = this.quizViewModelMCLB.getNextCountryFlag();
+        String nextImage = this.quizViewModelMCLB.getNextCountryFlagMCLB();
         String region = nextImage.substring(0, nextImage.indexOf('-'));
 
-        this.quizViewModelMCLB.setCorrectAnswer(nextImage);
+        this.quizViewModelMCLB.setCorrectAnswerMCLB(nextImage);
         answerTextView.setText("");
 
         questionNumberTextView.setText(getString(R.string.question,
-                (quizViewModelMCLB.getCorrectAnswers() + 1), QuizViewModelMCLB.getFlagsInQuiz()));
+                (quizViewModelMCLB.getCorrectAnswersMCLB() + 1), QuizViewModelMCLB.getFlagsInQuizMCLB()));
 
         try (InputStream stream = assets.open(region + "/" + nextImage + ".png")) {
             Drawable flag = Drawable.createFromStream(stream, nextImage);
             flagImageView.setImageDrawable(flag);
             animate(false);
         } catch (IOException e) {
-            Log.e(QuizViewModelMCLB.getTag(), "Error Loading " + nextImage, e);
+            Log.e(QuizViewModelMCLB.getTagMCLB(), "Error Loading " + nextImage, e);
         }
 
-        this.quizViewModelMCLB.shuffleFilenameList();
+        this.quizViewModelMCLB.shuffleFilenameListMCLB();
 
-        for (int rowNumber = 0; rowNumber < this.quizViewModelMCLB.getGuessRows(); rowNumber++) {
+        for (int rowNumber = 0; rowNumber < this.quizViewModelMCLB.getGuessRowsMCLB(); rowNumber++) {
             for (int column = 0; column < guessTableRows[rowNumber].getChildCount(); column++) {
                 Button guessButton = (Button) guessTableRows[rowNumber].getVirtualChildAt(column);
                 guessButton.setEnabled(true);
-                String filename = this.quizViewModelMCLB.getFileNameList()
+                String filename = this.quizViewModelMCLB.getFileNameListMCLB()
                         .get((rowNumber * 2) + column)
-                        .substring(this.quizViewModelMCLB.getFileNameList()
+                        .substring(this.quizViewModelMCLB.getFileNameListMCLB()
                                 .get((rowNumber * 2) + column).indexOf('-') + 1)
                         .replace('_', ' ');
                 guessButton.setText(filename);
             }
         }
 
-        int row = this.random.nextInt(this.quizViewModelMCLB.getGuessRows());
+        int row = this.random.nextInt(this.quizViewModelMCLB.getGuessRowsMCLB());
         int column = this.random.nextInt(2);
         TableRow randomRow = guessTableRows[row];
-        ((Button) randomRow.getChildAt(column)).setText(this.quizViewModelMCLB.getCorrectCountryName());
+        ((Button) randomRow.getChildAt(column)).setText(this.quizViewModelMCLB.getCorrectCountryNameMCLB());
     }
 
     public void animate(boolean animateOut) {
-        if (this.quizViewModelMCLB.getCorrectAnswers() == 0) {
+        if (this.quizViewModelMCLB.getCorrectAnswersMCLB() == 0) {
             return;
         }
         int centreX = (quizConstraintLayout.getLeft() + quizConstraintLayout.getRight()) / 2;
